@@ -1,5 +1,7 @@
-import { Star, Users, FileText } from "lucide-react"
-import Link from 'next/link'
+// app/page.tsx - Server Component
+import { Star, Users, FileText } from "lucide-react";
+import Link from "next/link";
+import ResumeUploader from "./components/ResumeUploader";
 
 export default function Home() {
   return (
@@ -11,7 +13,8 @@ export default function Home() {
           <span className="text-[#97ca3f]">Labs</span>
         </h1>
         <p className="mt-4 text-xl text-[#5a7260] max-w-2xl mx-auto px-4">
-          Connect with cutting-edge research labs using our AI-powered matching system
+          Connect with cutting-edge research labs using our AI-powered matching
+          system
         </p>
       </header>
 
@@ -37,19 +40,11 @@ export default function Home() {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Column - Upload Resume */}
           <div className="flex-1">
-            <h2 className="text-2xl font-bold text-[#2d6a41] mb-4">Upload Your Resume</h2>
-            <div className="border-2 border-dashed border-[#97ca3f] rounded-lg p-8 bg-[#f8f3e3] flex flex-col items-center justify-center">
-              <div className="bg-white p-4 rounded-full mb-4">
-                <FileText className="h-10 w-10 text-[#2d6a41]" />
-              </div>
-              <p className="text-[#2d6a41] font-medium text-lg">Drop your resume here</p>
-              <p className="text-[#5a7260] mt-1">or click to browse</p>
-            </div>
-            <Link href="/directory" className="block">
-              <button className="w-full bg-[#a0b5a0] text-white py-4 rounded-lg mt-6 font-medium">
-                Find My Lab Matches
-              </button>
-            </Link>
+            <h2 className="text-2xl font-bold text-[#2d6a41] mb-4">
+              Upload Your Resume
+            </h2>
+            {/* Client Component for file upload */}
+            <ResumeUploader />
           </div>
 
           {/* Right Column - Top Matches */}
@@ -71,10 +66,12 @@ export default function Home() {
                       <Star className="h-6 w-6 text-[#97ca3f]" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-[#2d6a41]">Quantum Computing Lab 1</h3>
+                      <h3 className="text-lg font-bold text-[#2d6a41]">
+                        Quantum Computing Lab 1
+                      </h3>
                       <p className="text-gray-600 mt-1">
-                        Research focus on quantum algorithms and quantum machine learning. Strong emphasis on
-                        theoretical foundations.
+                        Research focus on quantum algorithms and quantum machine
+                        learning. Strong emphasis on theoretical foundations.
                       </p>
                       <div className="flex gap-2 mt-3">
                         <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
@@ -102,10 +99,12 @@ export default function Home() {
                       <Users className="h-6 w-6 text-[#97ca3f]" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-[#2d6a41]">Quantum Computing Lab 2</h3>
+                      <h3 className="text-lg font-bold text-[#2d6a41]">
+                        Quantum Computing Lab 2
+                      </h3>
                       <p className="text-gray-600 mt-1">
-                        Research focus on quantum algorithms and quantum machine learning. Strong emphasis on
-                        theoretical foundations.
+                        Research focus on quantum algorithms and quantum machine
+                        learning. Strong emphasis on theoretical foundations.
                       </p>
                       <div className="flex gap-2 mt-3">
                         <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
@@ -129,6 +128,5 @@ export default function Home() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-
