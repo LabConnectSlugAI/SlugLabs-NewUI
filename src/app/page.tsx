@@ -1,4 +1,6 @@
 import { Star, Users, FileText } from "lucide-react"
+import Link from 'next/link'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#f8f3e3]">
@@ -23,9 +25,11 @@ export default function Home() {
                 <FileText size={20} />
                 <span className="font-medium">Match Me</span>
               </button>
-              <button className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg flex items-center justify-center gap-2">
-                <span className="font-medium">Browse Labs</span>
-              </button>
+              <Link href="/directory" className="flex-1">
+                <button className="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+                  <span className="font-medium">Browse Labs</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -41,9 +45,11 @@ export default function Home() {
               <p className="text-[#2d6a41] font-medium text-lg">Drop your resume here</p>
               <p className="text-[#5a7260] mt-1">or click to browse</p>
             </div>
-            <button className="w-full bg-[#a0b5a0] text-white py-4 rounded-lg mt-6 font-medium">
-              Find My Lab Matches
-            </button>
+            <Link href="/directory" className="block">
+              <button className="w-full bg-[#a0b5a0] text-white py-4 rounded-lg mt-6 font-medium">
+                Find My Lab Matches
+              </button>
+            </Link>
           </div>
 
           {/* Right Column - Top Matches */}
