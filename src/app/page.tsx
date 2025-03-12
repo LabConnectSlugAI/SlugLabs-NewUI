@@ -1,112 +1,129 @@
-"use client"; // Required for Next.js when using state/hooks in app directory
+import { Star, Users, FileText } from "lucide-react"
 
-import { useState } from "react";
-import Link from "next/link";
-import styles from "./page.module.css";
-
-export default function Landing() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file && file.type === "application/pdf") {
-      setSelectedFile(file);
-      console.log("Selected file:", file);
-    } else {
-      alert("Please upload a valid PDF file.");
-    }
-  };
-
-  const handleRemoveFile = () => {
-    setSelectedFile(null);
-  };
-
+export default function Home() {
   return (
-    <div className={styles.container}>
-      {/* Main Content Area */}
-      <main className={styles.main}>
-        {/* Logo and Tagline */}
-        <div className={styles.logoSection}>
-          <h1 className={styles.logoText}>
-            <span className={styles.slug}>Slug</span>
-            <span className={styles.labs}>Labs</span>
-          </h1>
+    <div className="min-h-screen bg-[#f8f3e3]">
+      {/* Header */}
+      <header className="pt-8 pb-4 text-center">
+        <h1 className="text-6xl font-bold">
+          <span className="text-[#2d6a41]">Slug</span>
+          <span className="text-[#97ca3f]">Labs</span>
+        </h1>
+        <p className="mt-4 text-xl text-[#5a7260] max-w-2xl mx-auto px-4">
+          Connect with cutting-edge research labs using our AI-powered matching system
+        </p>
+      </header>
 
-          <div className={styles.taglineContainer}>
-            <p className={styles.tagline}>
-              Discover Research, Unlock Opportunities
-            </p>
-            <div className={styles.divider}></div>
-            <p className={styles.tagline}>
-              The #1 spot to find research across UCSC
-            </p>
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto p-4">
+        <div className="bg-white rounded-3xl shadow-md p-6 mb-8">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Action Buttons */}
+            <div className="flex-1 flex gap-4">
+              <button className="flex-1 bg-[#97ca3f] text-white py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+                <FileText size={20} />
+                <span className="font-medium">Match Me</span>
+              </button>
+              <button className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+                <span className="font-medium">Browse Labs</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* File Upload Section */}
-        <div className={styles.uploadSection}>
-          <div>
-            {/* Hidden file input */}
-            <input
-              type="file"
-              accept="application/pdf"
-              onChange={handleFileChange}
-              style={{ display: "none" }}
-              id="pdf-upload"
-            />
-
-            {/* Button that triggers file input */}
-            <label htmlFor="pdf-upload" className={styles.uploadButton}>
-              <svg
-                className={styles.uploadIcon}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Upload your transcript or resume
-            </label>
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Left Column - Upload Resume */}
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold text-[#2d6a41] mb-4">Upload Your Resume</h2>
+            <div className="border-2 border-dashed border-[#97ca3f] rounded-lg p-8 bg-[#f8f3e3] flex flex-col items-center justify-center">
+              <div className="bg-white p-4 rounded-full mb-4">
+                <FileText className="h-10 w-10 text-[#2d6a41]" />
+              </div>
+              <p className="text-[#2d6a41] font-medium text-lg">Drop your resume here</p>
+              <p className="text-[#5a7260] mt-1">or click to browse</p>
+            </div>
+            <button className="w-full bg-[#a0b5a0] text-white py-4 rounded-lg mt-6 font-medium">
+              Find My Lab Matches
+            </button>
           </div>
 
-          {/* File Upload Display (Only shows if file is selected) */}
-          {selectedFile && (
-            <div className={styles.fileDisplay}>
-              <div className={styles.fileContainer}>
-                <div className={styles.fileContent}>
-                  <span className={styles.fileName}>{selectedFile.name}</span>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={handleRemoveFile}
-                  >
-                    <svg
-                      className={styles.deleteIcon}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
+          {/* Right Column - Top Matches */}
+          <div className="flex-1">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-[#2d6a41]">Top Matches</h2>
+              <a href="#" className="text-[#97ca3f] font-medium">
+                View All
+              </a>
+            </div>
+
+            {/* Match Cards */}
+            <div className="space-y-4">
+              {/* Match Card 1 */}
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="flex justify-between">
+                  <div className="flex gap-3">
+                    <div className="bg-[#f0f9e8] p-2 rounded-lg">
+                      <Star className="h-6 w-6 text-[#97ca3f]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-[#2d6a41]">Quantum Computing Lab 1</h3>
+                      <p className="text-gray-600 mt-1">
+                        Research focus on quantum algorithms and quantum machine learning. Strong emphasis on
+                        theoretical foundations.
+                      </p>
+                      <div className="flex gap-2 mt-3">
+                        <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
+                          Quantum Computing
+                        </span>
+                        <span className="bg-[#f5f0e0] text-[#8a7e55] px-3 py-1 rounded-full text-sm">
+                          Machine Learning
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm font-medium">
+                      95% Match
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Match Card 2 */}
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="flex justify-between">
+                  <div className="flex gap-3">
+                    <div className="bg-[#f0f9e8] p-2 rounded-lg">
+                      <Users className="h-6 w-6 text-[#97ca3f]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-[#2d6a41]">Quantum Computing Lab 2</h3>
+                      <p className="text-gray-600 mt-1">
+                        Research focus on quantum algorithms and quantum machine learning. Strong emphasis on
+                        theoretical foundations.
+                      </p>
+                      <div className="flex gap-2 mt-3">
+                        <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
+                          Quantum Computing
+                        </span>
+                        <span className="bg-[#f5f0e0] text-[#8a7e55] px-3 py-1 rounded-full text-sm">
+                          Machine Learning
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm font-medium">
+                      90% Match
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          )}
-
-          {/* Connect Button */}
-          <div>
-            <Link href="/directory" passHref>
-              <button className={styles.connectButton}>Connect!</button>
-            </Link>
           </div>
         </div>
       </main>
     </div>
-  );
+  )
 }
+
