@@ -662,9 +662,10 @@ export default function Directory() {
     } as const,
     filtersPanel: {
       width: "16rem",
-      backgroundColor: "#fef9c3",
+      backgroundColor: "#f3f2df",
       borderRadius: "0.5rem",
       padding: "1rem",
+      color: "#2d5c34",
     } as const,
     filterSection: {
       marginBottom: "1.5rem",
@@ -676,6 +677,7 @@ export default function Directory() {
       marginBottom: "0.5rem",
     } as const,
     filterTitle: {
+      color: "#2d5c34",
       fontWeight: "600",
     } as const,
     filterOptions: {
@@ -698,7 +700,7 @@ export default function Directory() {
       flex: "1",
     } as const,
     labsSection: {
-      backgroundColor: "#fef9c3",
+      backgroundColor: "#f3f2df",
       borderRadius: "0.5rem",
       padding: "1.5rem",
       marginBottom: "1.5rem",
@@ -706,11 +708,11 @@ export default function Directory() {
     sectionTitle: {
       fontSize: "1.5rem",
       fontWeight: "bold",
-      color: "#1a365d",
+      color: "#2d5c34",
       marginBottom: "1rem",
     } as const,
     sectionDescription: {
-      color: "#4a5568",
+      color: "#2d5c34",
       marginBottom: "1rem",
     } as const,
     labsGrid: {
@@ -736,21 +738,21 @@ export default function Directory() {
     labName: {
       fontSize: "1.125rem",
       fontWeight: "bold",
-      color: "#1a365d",
+      color: "#2d5c34",
     } as const,
     department: {
       fontSize: "0.875rem",
-      color: "#718096",
+      color: "#2d5c34",
       marginTop: "0.25rem",
     } as const,
     description: {
       marginTop: "0.5rem",
-      color: "#4a5568",
+      color: "#2d5c34",
     } as const,
     viewProfileButton: {
       marginTop: "1rem",
       width: "100%",
-      backgroundColor: "#1a365d",
+      backgroundColor: "#8cc63f",
       color: "white",
       padding: "0.5rem",
       borderRadius: "0.375rem",
@@ -768,7 +770,7 @@ export default function Directory() {
               style={{
                 fontSize: "1.875rem",
                 fontWeight: "bold",
-                color: "#1a365d",
+                color: "#2d5c34",
               }}
             >
               Recommended Labs

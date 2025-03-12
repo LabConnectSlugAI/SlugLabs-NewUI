@@ -120,7 +120,7 @@ export default function LabProfile() {
           align-items: center;
         }
         .logo-text-lab {
-          color: #14457f;
+          color: #2D5C34;
           font-size: 28px;
           font-weight: bold;
         }
@@ -157,7 +157,7 @@ export default function LabProfile() {
           font-size: 32px;
           margin-top: 0;
           margin-bottom: 20px;
-          color: #14457f;
+          color: #2d5c34;
         }
         .lab-description {
           margin-bottom: 30px;
@@ -169,7 +169,7 @@ export default function LabProfile() {
           font-weight: bold;
           margin-top: 20px;
           margin-bottom: 15px;
-          color: #333;
+          color: #2d5c34,;
         }
         .contact-details {
           margin-bottom: 30px;
@@ -186,9 +186,9 @@ export default function LabProfile() {
         .apply-button {
           display: block;
           width: 90%;
-          background-color: #fcd34d;
+          background-color: #8cc63f;
           border: none;
-          color: black;
+          color: white;
           padding: 12px 20px;
           border-radius: 5px;
           text-align: center;
@@ -206,7 +206,7 @@ export default function LabProfile() {
         .contact-lab-button {
           display: block;
           width: 90%;
-          background-color: #14457f;
+          background-color: #2d5c34;
           border: none;
           color: white;
           padding: 12px 20px;

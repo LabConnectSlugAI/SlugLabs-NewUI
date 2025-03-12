@@ -30,12 +30,12 @@
   margin-bottom: 1.5rem;
 }
 
-.labConnect {
-  color: #1a365d;
+.slug {
+  color: #2D5C34;
 }
 
-.ucsc {
-  color: #ecc94b;
+.labs {
+  color: #8CC63F;
 }
 
 .taglineContainer {
@@ -64,8 +64,8 @@
 }
 
 .uploadButton {
-  background-color: #fef9c3;
-  color: #1a202c;
+  background-color: #F3F2DF;
+  color: #2D5C34;
   font-weight: 500;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
@@ -79,7 +79,7 @@
 }
 
 .uploadButton:hover {
-  background-color: #fde68a;
+  background-color: #cdccbc;
 }
 
 .uploadIcon {
@@ -93,27 +93,25 @@
 }
 
 .fileContainer {
-  border: 1px solid #e2e8f0;
+  border: 1px solid #8CC63F;
   border-radius: 0.25rem;
 }
 
 .fileHeader {
-  background-color: #edf2f7;
+  background-color: #F3F2DF;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
 }
 
 .fileContent {
+  background-color: #F3F2DF;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.fileName {
-  font-size: 0.875rem;
-}
 
 .deleteButton {
   color: #718096;
@@ -132,9 +130,9 @@
 }
 
 .connectButton {
-  background-color: #fcd34d;
-  color: #1a202c;
-  font-weight: 700;
+  background-color: #2d5c3484;
+  color: #ffffff;
+  font-weight: 400;
   padding: 0.75rem 2rem;
   border-radius: 0.75rem;
   font-size: 1.25rem;
@@ -146,7 +144,7 @@
 }
 
 .connectButton:hover {
-  background-color: #fbbf24;
+  background-color: #2d5c34bb;
 }
 
 .footer {

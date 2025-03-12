@@ -28,8 +28,8 @@ export default function Landing() {
         {/* Logo and Tagline */}
         <div className={styles.logoSection}>
           <h1 className={styles.logoText}>
-            <span className={styles.labConnect}>LabConnect</span>{" "}
-            <span className={styles.ucsc}>UCSC</span>
+            <span className={styles.slug}>Slug</span>
+            <span className={styles.labs}>Labs</span>
           </h1>
 
           <div className={styles.taglineContainer}>
@@ -76,7 +76,6 @@ export default function Landing() {
           {selectedFile && (
             <div className={styles.fileDisplay}>
               <div className={styles.fileContainer}>
-                <div className={styles.fileHeader}>FILE NAME</div>
                 <div className={styles.fileContent}>
                   <span className={styles.fileName}>{selectedFile.name}</span>
                   <button

@@ -19,7 +19,7 @@ export default function RootLayout({
         {/* Shared Header */}
         <header
           style={{
-            backgroundColor: "white",
+            backgroundColor:" #F3F2DF",
             padding: "1rem",
             boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
           }}
@@ -36,20 +36,19 @@ export default function RootLayout({
           >
             <div style={{ display: "flex", alignItems: "center" }}>
               <h1>
-                <span style={{ fontWeight: "bold", color: "#1a365d" }}>
-                  Lab
+                <span style={{ fontWeight: "bold", color: "#2D5C34" }}>
+                  Slug
                 </span>
-                <span style={{ fontWeight: "bold", color: "#1a365d" }}>
-                  Connect
-                </span>{" "}
-                <span style={{ color: "#4a5568" }}>UCSC</span>
+                <span style={{ fontWeight: "bold", color: "#8CC63F" }}>
+                  Labs
+                </span>
               </h1>
             </div>
             <nav style={{ display: "flex", gap: "1rem" }}>
               <Link
                 href="/"
                 style={{
-                  color: "#4a5568",
+                  color: "#2D5C34",
                   textDecoration: "none",
                   fontWeight: "500",
                 }}
@@ -59,7 +58,7 @@ export default function RootLayout({
               <Link
                 href="/directory"
                 style={{
-                  color: "#4a5568",
+                  color: "#2D5C34",
                   textDecoration: "none",
                   fontWeight: "500",
                 }}
