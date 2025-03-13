@@ -13,6 +13,9 @@ interface FileState {
 export default function ResumeUploader() {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [file, setFile] = useState<FileState | null>(null);
+  const [uploadComplete, setUploadComplete] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   // Handle drag events
   const handleDragEnter = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -68,6 +71,25 @@ export default function ResumeUploader() {
           name: selectedFile.name,
           size: selectedFile.size,
         });
+        
+        // Start upload simulation
+        setIsUploading(true);
+        setUploadProgress(0);
+        
+        // Simulate upload progress
+        const interval = setInterval(() => {
+          setUploadProgress((prev) => {
+            if (prev >= 100) {
+              clearInterval(interval);
+              setIsUploading(false);
+              setUploadComplete(true);
+              // Hide success message after 5 seconds
+              setTimeout(() => setUploadComplete(false), 5000);
+              return 100;
+            }
+            return prev + 10;
+          });
+        }, 300);
       }
     },
     []
@@ -127,12 +149,35 @@ export default function ResumeUploader() {
           )}
         </label>
       </div>
+
+      {/* Loading Progress Bar */}
+      {isUploading && (
+        <div className="mt-4">
+          <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#97ca3f] transition-all duration-300 ease-out"
+              style={{ width: `${uploadProgress}%` }}
+            />
+          </div>
+          <p className="text-sm text-[#5a7260] mt-2 text-center">
+            Uploading resume... {uploadProgress}%
+          </p>
+        </div>
+      )}
+
+      {/* Success Message - show after upload complete */}
+      {uploadComplete && !isUploading && (
+        <div className="mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center">
+          Resume successfully uploaded! ✓
+        </div>
+      )}
+
       <Link href="/directory" className="block">
         <button
           className={`w-full ${
             file ? "bg-[#2d6a41]" : "bg-[#a0b5a0]"
           } text-white py-4 rounded-lg mt-6 font-medium transition-colors duration-200`}
-          disabled={!file}
+          disabled={!file || isUploading}
         >
           Find My Lab Matches
         </button>
