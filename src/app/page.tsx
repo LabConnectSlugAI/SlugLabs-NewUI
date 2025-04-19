@@ -1,9 +1,29 @@
-// app/page.tsx - Server Component
+// app/page.tsx
+"use client";
+
 import { Star, Users, FileText } from "lucide-react";
 import Link from "next/link";
 import ResumeUploader from "./components/ResumeUploader";
+import LabModal from "./components/LabModal"; // Correct import
+import { useState } from "react";
+
+interface Lab {
+  id: number;
+  Department: string;
+  "Professor Name": string;
+  Contact: string;
+  "Lab Name": string;
+  Major: string;
+  "How to apply": string;
+  Description: string;
+  match_reason?: string;
+  similarity_score?: number;
+}
 
 export default function Home() {
+  const [labs, setLabs] = useState<Lab[]>([]);
+  const [selectedLab, setSelectedLab] = useState<Lab | null>(null); // State for selected lab
+
   return (
     <div className="min-h-screen bg-[#f8f3e3]">
       {/* Header */}
@@ -44,7 +64,7 @@ export default function Home() {
               Upload Your Resume
             </h2>
             {/* Client Component for file upload */}
-            <ResumeUploader />
+            <ResumeUploader onLabsFound={(labs) => setLabs(labs)} />
           </div>
 
           {/* Right Column - Top Matches */}
@@ -58,75 +78,49 @@ export default function Home() {
 
             {/* Match Cards */}
             <div className="space-y-4">
-              {/* Match Card 1 */}
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="flex justify-between">
-                  <div className="flex gap-3">
-                    <div className="bg-[#f0f9e8] p-2 rounded-lg">
-                      <Star className="h-6 w-6 text-[#97ca3f]" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-[#2d6a41]">
-                        Quantum Computing Lab 1
-                      </h3>
-                      <p className="text-gray-600 mt-1">
-                        Research focus on quantum algorithms and quantum machine
-                        learning. Strong emphasis on theoretical foundations.
-                      </p>
-                      <div className="flex gap-2 mt-3">
-                        <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
-                          Quantum Computing
-                        </span>
-                        <span className="bg-[#f5f0e0] text-[#8a7e55] px-3 py-1 rounded-full text-sm">
-                          Machine Learning
-                        </span>
-                      </div>
-                    </div>
+              {labs.map((lab) => (
+                <div
+                key={lab.id}
+                className="bg-white rounded-lg p-4 shadow-sm cursor-pointer relative" // Ensure 'relative' is here
+                onClick={() => setSelectedLab(lab)}
+              >
+                {/* Match Score - Top Right */}
+                <div className="absolute top-4 right-4 z-10"> {/* Add z-10 to ensure it stays on top */}
+                  <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm font-medium shadow-sm">
+                    {lab.similarity_score}/5 Match
+                  </span>
+                </div>
+              
+                {/* Lab Content */}
+                <div className="flex gap-3">
+                  <div className="bg-[#f0f9e8] p-2 rounded-lg">
+                    <Star className="h-6 w-6 text-[#97ca3f]" />
                   </div>
-                  <div className="text-right">
-                    <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm font-medium">
-                      95% Match
-                    </span>
+                  <div>
+                    <h3 className="text-lg font-bold text-[#2d6a41]">
+                      {lab["Lab Name"]}
+                    </h3>
+                    <div className="flex gap-2 mt-3">
+                      <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
+                        {lab.Major}
+                      </span>
+                      <span className="bg-[#f5f0e0] text-[#8a7e55] px-3 py-1 rounded-full text-sm">
+                        {lab["Professor Name"]}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              {/* Match Card 2 */}
-              <div className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="flex justify-between">
-                  <div className="flex gap-3">
-                    <div className="bg-[#f0f9e8] p-2 rounded-lg">
-                      <Users className="h-6 w-6 text-[#97ca3f]" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-[#2d6a41]">
-                        Quantum Computing Lab 2
-                      </h3>
-                      <p className="text-gray-600 mt-1">
-                        Research focus on quantum algorithms and quantum machine
-                        learning. Strong emphasis on theoretical foundations.
-                      </p>
-                      <div className="flex gap-2 mt-3">
-                        <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm">
-                          Quantum Computing
-                        </span>
-                        <span className="bg-[#f5f0e0] text-[#8a7e55] px-3 py-1 rounded-full text-sm">
-                          Machine Learning
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <span className="bg-[#f0f9e8] text-[#2d6a41] px-3 py-1 rounded-full text-sm font-medium">
-                      90% Match
-                    </span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </main>
+
+      {/* Lab Modal */}
+      {selectedLab && (
+        <LabModal lab={selectedLab} onClose={() => setSelectedLab(null)} />
+      )}
     </div>
   );
 }
